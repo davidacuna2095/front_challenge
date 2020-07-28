@@ -1,0 +1,11 @@
+{
+    "HEADER": {
+        "bienvenido": "Bienvenido",
+        "logout": "Cerrar Sesión",
+        "subtitle": "Tus Álbumes"
+    },
+    "LANGS": {
+        "es": "Español",
+        "en": "Ingles"
+    }
+}

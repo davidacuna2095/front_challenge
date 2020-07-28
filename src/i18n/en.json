@@ -1,0 +1,11 @@
+{
+    "HEADER": {
+        "bienvenido": "Welcome",
+        "logout": "Logout",
+        "subtitle": "Your albums"
+    },
+    "LANGS": {
+        "es": "Spanish",
+        "en": "English"
+    }
+}
