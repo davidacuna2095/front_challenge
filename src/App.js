@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './components/auth/Login';
 import Board from './components/board/Board';
 
+import AlbumProvider from './context/albumes/AlbumProvider';
+
 import './App.css';
 
 function App() {
@@ -11,7 +13,11 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/login" component={Login} />
-        <Route path="/" component={Board} />
+
+        <AlbumProvider>
+          <Route path="/" component={Board} />
+        </AlbumProvider>
+
       </Switch>
     </Router>
   );

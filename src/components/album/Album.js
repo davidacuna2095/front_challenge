@@ -1,10 +1,8 @@
 import React from 'react';
 
-const Album = () => {
+const Album = ({ album }) => {
     return (
-        <div>
-            <h3>Album</h3>
-        </div>
+        <li><span>{album.title}</span></li>
     )
 };
 

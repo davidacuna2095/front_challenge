@@ -1,0 +1,14 @@
+.listado-album li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+
+    &:nth-child(1){
+        margin-top: 40px;
+    }
+
+    span {
+        color: darkslategray;
+        line-height: 1;
+        font-weight: 200;
+    }
+}

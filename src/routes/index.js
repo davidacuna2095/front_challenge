@@ -1,5 +1,5 @@
 import Board from '../components/board/Board';
-import Album from '../components/album/Album';
+import ListadoAlbum from '../components/album/ListadoAlbum';
 
 const routes = [
     {
@@ -10,7 +10,7 @@ const routes = [
     {
         path: "/album",
         exact: true,
-        component: Album
+        component: ListadoAlbum
     }
 ]
 

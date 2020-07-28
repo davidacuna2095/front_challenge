@@ -1,6 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
+import ListadoAlbum from '../../components/album/ListadoAlbum';
+
 import './Board.scss';
 
 const Sidebar = () => {
@@ -14,6 +16,9 @@ const Sidebar = () => {
             <div className="form-sidebar">
                 <h2>{t('HEADER.subtitle')}</h2>
             </div>
+
+            <ListadoAlbum />
+
         </aside>
     )
 };
