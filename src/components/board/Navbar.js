@@ -9,8 +9,10 @@ import './Board.scss';
 
 const Navbar = () => {
 
+    // Translator
     const { t, i18n } = useTranslation();
 
+    // onChange de cambio de idioma de la app
     const onChangeLanguaje = (lang) => {
         i18n.changeLanguage(lang);
     };
@@ -19,17 +21,20 @@ const Navbar = () => {
         nombre: 'Guest'
     });
 
+    // acciones al hacer logout
     const cerrarSesion = () => {
 
     }
 
     return (
         <header className="nav-header">
+            {/* Mostrar  ombre de user en navbat si existe */}
             {usuario ?
                 <p className="nombre-usuario">{t(`HEADER.bienvenido`)} <span>{usuario.nombre}</span></p> : null
             }
 
             <nav className="nav-util">
+                {/* Select para cambiar idioma */}
                 <select
                     className={`form-control`}
                     name="language"
@@ -43,6 +48,7 @@ const Navbar = () => {
                     ))}
                 </select>
 
+                {/* Cerrar sesion */}
                 <Link
                     to={"/login"}
                     onClick={() => { cerrarSesion() }}

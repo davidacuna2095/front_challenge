@@ -1,4 +1,7 @@
 {
+    "GENERAL": {
+        "add": "Agregar"
+    },
     "HEADER": {
         "bienvenido": "Bienvenido",
         "logout": "Cerrar Sesión",
@@ -7,5 +10,11 @@
     "LANGS": {
         "es": "Español",
         "en": "Ingles"
+    },
+    "ALERTS": {
+        "required": "Todos los campos son obligatorios."
+    },
+    "ALBUM": {
+        "nombre": "Nombre del album"
     }
 }

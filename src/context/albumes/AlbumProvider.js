@@ -1,7 +1,8 @@
 
 import React, { useReducer } from 'react';
 import {
-    LISTAR_ALBUMES
+    LISTAR_ALBUMES,
+    AGREGAR_ALBUM
 } from '../../types';
 
 import AlbumContext from './AlbumContext';
@@ -15,11 +16,12 @@ const AlbumProvider = (props) => {
         albums: []
     };
 
-    // Usar Reducer
+    // Usar Reducer: Le paso el reducer y estado inicial
     const [state, dispatch] = useReducer(albumReducer, initialState);
 
-    // Funciones que modifican action
+    // --Funciones que modifican action
 
+    // [GET] Obtener albumes
     const getAlbums = async userId => {
 
         try {
@@ -34,11 +36,28 @@ const AlbumProvider = (props) => {
         }
     };
 
+    // [POST] Añadir album a usuario actual
+    const addAlbum = async album => {
+
+        try {
+            const response = await axiosClient.post(`/albums?userId=${album.userId}`, album);
+
+            dispatch({
+                type: AGREGAR_ALBUM,
+                payload: response.data
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    // Variables y funciones que estarán disponibles en scope del context
     return (
         <AlbumContext.Provider
             value={{
                 albums: state.albums,
-                getAlbums
+                getAlbums,
+                addAlbum
             }}
         >
             {props.children}

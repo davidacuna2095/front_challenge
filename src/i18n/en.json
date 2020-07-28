@@ -1,4 +1,7 @@
 {
+    "GENERAL": {
+        "add": "Add"
+    },
     "HEADER": {
         "bienvenido": "Welcome",
         "logout": "Logout",
@@ -7,5 +10,11 @@
     "LANGS": {
         "es": "Spanish",
         "en": "English"
+    },
+    "ALERTS": {
+        "required": "All form-fields are requiered."
+    },
+    "ALBUM": {
+        "nombre": "Album Name"
     }
 }
