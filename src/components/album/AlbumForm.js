@@ -2,6 +2,7 @@ import React, { Fragment, useState, useContext } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import AlbumContext from '../../context/albumes/AlbumContext';
+import AuthContext from '../../context/autenticacion/AuthContext';
 import useAlert from '../../hooks/useAlert';
 
 // helper para validar si un campo esta incompleto
@@ -13,6 +14,9 @@ const AlbumForm = () => {
 
     // -- CONTEXTS
     // Album context. Destructuring state y functions necesarios
+    const authContext = useContext(AuthContext);
+    const { usuario } = authContext;
+
     const albumContext = useContext(AlbumContext);
     const { addAlbum } = albumContext;
 
@@ -62,7 +66,7 @@ const AlbumForm = () => {
         setShadow(false);
 
         // Agregar album a travñes context
-        album.userId = 2; // Seteo aca el id (sin uso del state) ya que es un proceso que haria el backend con el token/usuario autenticado
+        album.userId = usuario.id; // --IMPORTANTE Seteo aca el id (sin uso del state) ya que es un proceso que haria el backend con el token/usuario autenticado
         addAlbum(album);
 
         //Reiniciar Formulario

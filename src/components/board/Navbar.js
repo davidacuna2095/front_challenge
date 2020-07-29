@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { locale } from '../../config/i18n';
 import { Link } from 'react-router-dom';
+
+import AuthContext from '../../context/autenticacion/AuthContext';
 
 import { useTranslation } from 'react-i18next';
 
@@ -8,6 +10,11 @@ import './Board.scss';
 
 
 const Navbar = () => {
+
+    // --CONTEXTS
+    // Authcontext para obtener variables de usuario
+    const authContext = useContext(AuthContext);
+    const { usuario, cerrarSesion } = authContext;
 
     // Translator
     const { t, i18n } = useTranslation();
@@ -17,20 +24,11 @@ const Navbar = () => {
         i18n.changeLanguage(lang);
     };
 
-    const [usuario, setUsuario] = useState({
-        nombre: 'Guest'
-    });
-
-    // acciones al hacer logout
-    const cerrarSesion = () => {
-
-    }
-
     return (
         <header className="nav-header">
             {/* Mostrar  ombre de user en navbat si existe */}
             {usuario ?
-                <p className="nombre-usuario">{t(`HEADER.bienvenido`)} <span>{usuario.nombre}</span></p> : null
+                <p className="nombre-usuario">{t(`HEADER.bienvenido`)} <span>{usuario.name}</span></p> : null
             }
 
             <nav className="nav-util">

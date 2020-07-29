@@ -3,8 +3,10 @@ import { Redirect } from 'react-router-dom';
 import Board from '../components/board/Board';
 import ListadoAlbum from '../components/album/ListadoAlbum';
 
+// Redirect a board cuando ingrese /
 const BoardRedirect = () => <Redirect to="/board" />
 
+// Routes disponibles 
 const routes = [
     {
         path: "/",
