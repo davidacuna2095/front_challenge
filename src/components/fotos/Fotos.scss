@@ -1,0 +1,23 @@
+h3 {
+    font-family: sans-serif;
+    color: #212529;
+    text-align:left;
+    font-weight: 400;
+    font-size: 32px;
+    
+    &::after {
+        content: '';
+        width: 97px;
+        height: 3px;
+        background: linear-gradient(to right, #004e92, #000428);
+        display:block;
+    }
+}
+
+.foto-title {
+    height: 50px;
+    overflow-y: scroll;
+    padding: 7px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
+}

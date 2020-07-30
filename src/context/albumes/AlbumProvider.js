@@ -2,7 +2,8 @@
 import React, { useReducer } from 'react';
 import {
     LISTAR_ALBUMES,
-    AGREGAR_ALBUM
+    AGREGAR_ALBUM,
+    ALBUM_ACTUAL
 } from '../../types';
 
 import AlbumContext from './AlbumContext';
@@ -13,7 +14,8 @@ const AlbumProvider = (props) => {
 
     // State inicial
     const initialState = {
-        albums: []
+        albums: [],
+        currentAlbum: null
     };
 
     // Usar Reducer: Le paso el reducer y estado inicial
@@ -51,13 +53,23 @@ const AlbumProvider = (props) => {
         }
     };
 
+    // Setter de album actual en el scope del usuario para mostrar fotos de acuerdo a album seleccionado
+    const setCurrentAlbum = albumId => {
+        dispatch({
+            type: ALBUM_ACTUAL,
+            payload: albumId
+        });
+    };
+
     // Variables y funciones que estarán disponibles en scope del context
     return (
         <AlbumContext.Provider
             value={{
                 albums: state.albums,
+                currentAlbum: state.currentAlbum,
                 getAlbums,
-                addAlbum
+                addAlbum,
+                setCurrentAlbum
             }}
         >
             {props.children}

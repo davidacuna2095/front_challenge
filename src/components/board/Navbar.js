@@ -3,6 +3,7 @@ import { locale } from '../../config/i18n';
 import { Link } from 'react-router-dom';
 
 import AuthContext from '../../context/autenticacion/AuthContext';
+import AlbumContext from '../../context/albumes/AlbumContext';
 
 import { useTranslation } from 'react-i18next';
 
@@ -15,6 +16,9 @@ const Navbar = () => {
     // Authcontext para obtener variables de usuario
     const authContext = useContext(AuthContext);
     const { usuario, cerrarSesion } = authContext;
+    // AlbumContext para obtener variables de album y quitarlo al cerrar sesion
+    const albumContext = useContext(AlbumContext);
+    const { setCurrentAlbum } = albumContext;
 
     // Translator
     const { t, i18n } = useTranslation();
@@ -22,6 +26,12 @@ const Navbar = () => {
     // onChange de cambio de idioma de la app
     const onChangeLanguaje = (lang) => {
         i18n.changeLanguage(lang);
+    };
+
+    // Acciones para cerrar sesion mas retornar currentalbum a null
+    const logOut = () => {
+        setCurrentAlbum(null);
+        cerrarSesion();
     };
 
     return (
@@ -49,7 +59,7 @@ const Navbar = () => {
                 {/* Cerrar sesion */}
                 <Link
                     to={"/login"}
-                    onClick={() => { cerrarSesion() }}
+                    onClick={() => { logOut() }}
                 >{t(`HEADER.logout`)}</Link>
             </nav>
         </header>

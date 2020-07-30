@@ -15,6 +15,7 @@
         "required": "Todos los campos son obligatorios."
     },
     "ALBUM": {
-        "nombre": "Nombre del album"
+        "nombre": "Nombre del album",
+        "tusfotos": "Tus Fotos"
     }
 }

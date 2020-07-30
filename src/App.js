@@ -10,6 +10,7 @@ import Board from './components/board/Board';
 // -- CONTEXTS
 import AlbumProvider from './context/albumes/AlbumProvider';
 import AuthProvider from './context/autenticacion/AuthProvider';
+import FotoContext from './context/fotos/FotoProvider';
 
 import './App.css';
 
@@ -23,7 +24,9 @@ function App() {
           <AuthProvider>
             <Route path="/login" component={Login} />
             <AlbumProvider>
-              <RutaPrivada path="/" component={Board} />
+              <FotoContext>
+                <RutaPrivada path="/" component={Board} />
+              </FotoContext>
             </AlbumProvider>
           </AuthProvider>
         </Switch>

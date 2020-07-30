@@ -80,6 +80,10 @@ const AlbumForm = () => {
     // Function para cambiar state de mostrar de acuerdo a valor actual
     const mostrarFormulario = () => {
         setMostrar(mostrar ? false : true);
+        //Reiniciar Formulario
+        setAlbum({
+            title: ''
+        });
     }
 
     return (
@@ -109,6 +113,7 @@ const AlbumForm = () => {
                         name="title"
                         placeholder={t('ALBUM.nombre')}
                         value={title}
+                        autoComplete="off"
                         onChange={(e) => onChangeAlbum(e)}
                     />
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Board from '../components/board/Board';
-import ListadoAlbum from '../components/album/ListadoAlbum';
+import ListadoFotos from '../components/fotos/ListadoFotos';
 
 // Redirect a board cuando ingrese /
 const BoardRedirect = () => <Redirect to="/board" />
@@ -19,9 +19,9 @@ const routes = [
         component: Board
     },
     {
-        path: "/album",
+        path: "/album/:id",
         exact: true,
-        component: ListadoAlbum
+        component: ListadoFotos
     }
 ];
 

@@ -15,6 +15,7 @@
         "required": "All form-fields are requiered."
     },
     "ALBUM": {
-        "nombre": "Album Name"
+        "nombre": "Album Name",
+        "tusfotos": "Your Photos"
     }
 }

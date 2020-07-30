@@ -1,6 +1,7 @@
 import {
     LISTAR_ALBUMES,
-    AGREGAR_ALBUM
+    AGREGAR_ALBUM,
+    ALBUM_ACTUAL
 } from '../../types';
 
 export default (state, action) => {
@@ -21,6 +22,13 @@ export default (state, action) => {
                     action.payload,
                     ...state.albums
                 ]
+            }
+
+        // Setea el album que se esta visualizando
+        case ALBUM_ACTUAL:
+            return {
+                ...state,
+                currentAlbum: action.payload
             }
 
         default:

@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect, Fragment } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../context/autenticacion/AuthContext';
 import useAlert from '../../hooks/useAlert';
@@ -8,12 +9,16 @@ import { revisarAlerta } from '../../helpers/helpers';
 
 import './Login.scss';
 
-const Login = (props) => {
+const Login = () => {
 
     // --CONTEXTS
     // Authcontext para obtener variables de usuario
     const authContext = useContext(AuthContext);
     const { mensaje, autenticado, iniciarSesion } = authContext;
+
+
+    // hook de history de react-router-dom
+    let history = useHistory();
 
 
     // --STATES
@@ -36,7 +41,7 @@ const Login = (props) => {
     useEffect(() => {
         // Si esta autenticado se indica ruta a la cual deberia navegar
         if (autenticado) {
-            props.history.push('/board');
+            history.push('/board');
         }
 
         // Si hubo error de autenticacion mostrar error
@@ -44,7 +49,7 @@ const Login = (props) => {
             mostrarAlerta(mensaje);
         }
         // eslint-disable-next-line
-    }, [mensaje, autenticado, props.history]);
+    }, [mensaje, autenticado, history]);
 
     const doLogin = e => {
         e.preventDefault();
@@ -86,10 +91,11 @@ const Login = (props) => {
                             <input
                                 id="username"
                                 name="username"
-                                type="username"
+                                type="text"
                                 className={`form-control ${revisarAlerta(shadow, username)}`}
                                 placeholder="Tu username"
                                 value={username}
+                                autoComplete="off"
                                 onChange={(e) => saveData(e)}
                             />
                         </div>
@@ -103,6 +109,7 @@ const Login = (props) => {
                                 className={`form-control ${revisarAlerta(shadow, password)}`}
                                 placeholder="Tu password"
                                 value={password}
+                                autoComplete="off"
                                 onChange={(e) => saveData(e)}
                             />
                         </div>
