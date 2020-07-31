@@ -1,6 +1,8 @@
 {
     "GENERAL": {
-        "add": "Add"
+        "add": "Add",
+        "editar": "Edit",
+        "save": "Save"
     },
     "HEADER": {
         "bienvenido": "Welcome",
@@ -12,10 +14,18 @@
         "en": "English"
     },
     "ALERTS": {
-        "required": "All form-fields are requiered."
+        "required": "All form-fields are requiered.",
+        "deletePhotoSuc": "Photo successfully removed.",
+        "deletePhotoError": "Sorry, there's an error.",
+        "patchPhotoSuc": "Photo successfully updated."
     },
     "ALBUM": {
         "nombre": "Album Name",
         "tusfotos": "Your Photos"
+    },
+    "FOTO": {
+        "foto": "Photo",
+        "idAlbum": "Album id",
+        "title": "Title"
     }
 }

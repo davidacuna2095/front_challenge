@@ -49,3 +49,15 @@ h3 {
           }
     }
 }
+
+label.labelFoto {
+    color: darkslategrey;
+
+    &::after {
+        content: '';
+        width: 25px;
+        height: 3px;
+        background: linear-gradient(to right, #004e92, #000428);
+        display:block;
+    }
+}

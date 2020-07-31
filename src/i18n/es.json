@@ -1,6 +1,8 @@
 {
     "GENERAL": {
-        "add": "Agregar"
+        "add": "Agregar",
+        "editar": "Editar",
+        "save": "Guardar"
     },
     "HEADER": {
         "bienvenido": "Bienvenido",
@@ -12,10 +14,18 @@
         "en": "Ingles"
     },
     "ALERTS": {
-        "required": "Todos los campos son obligatorios."
+        "required": "Todos los campos son obligatorios.",
+        "deletePhotoSuc": "Foto eliminada correctamente.",
+        "deletePhotoError": "Lo siento, hubo un error.",
+        "patchPhotoSuc": "Foto actualizada correctamente."
     },
     "ALBUM": {
         "nombre": "Nombre del album",
         "tusfotos": "Tus Fotos"
+    },
+    "FOTO": {
+        "foto": "Foto",
+        "idAlbum": "Album id",
+        "title": "Titulo"
     }
 }

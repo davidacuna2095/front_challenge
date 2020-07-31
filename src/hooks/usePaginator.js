@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import './styles_paginator.scss';
+import '../styles/styles_paginator.scss';
 
 const usePaginator = (registrosMostrar, contenido) => {
 

@@ -5,6 +5,7 @@ import Foto from './Foto';
 
 import AlbumContext from '../../context/albumes/AlbumContext';
 import FotoContext from '../../context/fotos/FotoContext';
+import DetalleFoto from '../../components/fotos/DetalleFoto';
 
 import usePaginator from '../../hooks/usePaginator.js';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +21,7 @@ const ListadoFotos = () => {
 
     // Foto context. Destructuring state y functions necesarios
     const fotoContext = useContext(FotoContext);
-    const { fotos, getPhotos } = fotoContext;
+    const { fotos, currentPhoto, getPhotos } = fotoContext;
 
     // -- CUSTOM HOOK
     // Paginador de lado de cliente. Se envia cantidad de elementos a mostrar y array original
@@ -44,6 +45,7 @@ const ListadoFotos = () => {
 
     return (
         <Fragment>
+            {currentPhoto ? <DetalleFoto /> : null}
             <h3>{t('ALBUM.tusfotos')}</h3>
             <div
                 className="row"
