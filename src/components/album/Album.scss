@@ -1,3 +1,6 @@
+$meliBlue: lightblue;
+$meliBlueLight: #4da6ff;
+
 .listado-album li {
     margin-bottom: 1rem;
     cursor: pointer;
@@ -103,3 +106,66 @@ div.album-container {
     max-height: 400px;
     overflow-y: scroll;
 }
+
+.input_container {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.inputMeli {
+    display:block;
+    font-family: monospace;
+    width: 80%;
+    border: 0;
+    border-bottom: 2px solid #999;
+    outline: 0;
+    font-size: 15PX;
+    color: #999;
+    padding: 20px 0px 0px 0px;
+    background: transparent;
+    transition: border-color 0.2s;
+  
+    &::placeholder {
+      color: transparent;
+    }
+  
+    &:placeholder-shown ~ .labelMeli {
+      cursor: text;
+      top: 20px;
+    }
+}
+
+.inputMeli:focus {
+    ~ .labelMeli {
+      position: absolute;
+      top: 0;
+      display: block;
+      transition: 0.2s;
+      font-size: 13px;
+      color: $meliBlue;
+      font-weight:700;    
+    }
+    padding-bottom: 6px;  
+    font-weight: 700;
+    border-width: 3px;
+    border-image: linear-gradient(to right, $meliBlue,$meliBlueLight);
+    border-image-slice: 1;
+}
+
+.inputMeli{
+    &:required,&:invalid { box-shadow:none; }
+} 
+
+.labelMeli {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 14px;
+    color: #999;
+    font-family: monospace;
+    min-width: 100px;
+}
+  

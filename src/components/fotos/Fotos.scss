@@ -21,3 +21,31 @@ h3 {
     font-family: "Courier New", Courier, monospace;
     font-size: 14px;
 }
+
+.edicion {
+    display: block;
+
+    button {
+        float: right;
+        padding: 0 4px;
+        padding-top: 2px;
+        height: 21px;
+        margin-top: 2px;
+        font-size: 11px;
+        background-color: whitesmoke;
+        color: #212529;
+        border:none
+    }
+
+    span {
+        float: right;
+        cursor: pointer;
+
+        &.delete:before {
+            content: "\1F5D1";
+            padding-right: 5px;
+            padding-left: 5px;
+            font-size: 10px;
+          }
+    }
+}
