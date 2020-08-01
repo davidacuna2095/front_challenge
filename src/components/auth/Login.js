@@ -55,7 +55,7 @@ const Login = () => {
         e.preventDefault();
 
         // Validar data completa
-        if (username.trim() === '' || password.trim() === '') {
+        if (Object.keys(data).some(key => data[key] === '')) {
             mostrarAlerta({ msg: 'Todos los campos son obligatorios', categoria: 'alerta-error' });
             setShadow(true);
             return;

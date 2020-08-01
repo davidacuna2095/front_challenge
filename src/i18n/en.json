@@ -2,12 +2,16 @@
     "GENERAL": {
         "add": "Add",
         "editar": "Edit",
-        "save": "Save"
+        "save": "Save",
+        "update": "Update",
+        "si": "Yes",
+        "no": "No"
     },
     "HEADER": {
         "bienvenido": "Welcome",
         "logout": "Logout",
-        "subtitle": "Your albums"
+        "subtitle": "Your albums",
+        "config": "Configuration"
     },
     "LANGS": {
         "es": "Spanish",
@@ -17,7 +21,10 @@
         "required": "All form-fields are requiered.",
         "deletePhotoSuc": "Photo successfully removed.",
         "deletePhotoError": "Sorry, there's an error.",
-        "patchPhotoSuc": "Photo successfully updated."
+        "patchPhotoSuc": "Photo successfully updated.",
+        "deleteUserSuc": "User successfully updated.",
+        "deleteUserError": "Sorry, there's an error.",
+        "confirmardelimg": "Are you sure you want to delete the image"
     },
     "ALBUM": {
         "nombre": "Album Name",
@@ -27,5 +34,12 @@
         "foto": "Photo",
         "idAlbum": "Album id",
         "title": "Title"
+    },
+    "USUARIO": {
+        "name": "Name",
+        "username": "Username",
+        "email": "Email",
+        "phone": "Phone",
+        "website": "Website"
     }
 }

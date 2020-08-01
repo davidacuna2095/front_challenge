@@ -13,10 +13,10 @@ import './Album.scss';
 const AlbumForm = () => {
 
     // -- CONTEXTS
-    // Album context. Destructuring state y functions necesarios
+    // Auth context. Destructuring state y functions necesarios
     const authContext = useContext(AuthContext);
     const { usuario } = authContext;
-
+    // Album context. Destructuring funcion para patch del album
     const albumContext = useContext(AlbumContext);
     const { addAlbum } = albumContext;
 
@@ -24,16 +24,16 @@ const AlbumForm = () => {
     // -- STATES
     // State para mostrar formulario de nuevo album
     const [mostrar, setMostrar] = useState(false);
-
     // State para sombrear form con campos faltantes cuando hay alert
     const [shadow, setShadow] = useState(false);
-
     // State para instancia de album
     const [album, setAlbum] = useState({
         title: ''
     });
+
     // Object destructuring para get title
     const { title } = album;
+
 
     // -- CUSTOM HOOKS
     // Custom hook para mostrar alertas
@@ -43,8 +43,9 @@ const AlbumForm = () => {
     // translator
     const { t } = useTranslation();
 
+
     // -- FUNCTIONS
-    // Handles change en formulario de album
+    // Actualizar state. Spread operator para update de key especifica
     const onChangeAlbum = e => {
         setAlbum({
             ...album,
@@ -85,6 +86,7 @@ const AlbumForm = () => {
             title: ''
         });
     }
+
 
     return (
         <Fragment>

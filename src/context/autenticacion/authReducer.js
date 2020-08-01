@@ -2,7 +2,8 @@ import {
     LOGIN_EXITOSO,
     LOGIN_ERROR,
     OBTENER_USUARIO,
-    CERRAR_SESION
+    CERRAR_SESION,
+    UPDATE_USUARIO
 } from '../../types';
 
 export default (state, action) => {
@@ -47,6 +48,12 @@ export default (state, action) => {
                 token: null,
                 autenticado: false,
                 usuario: null
+            }
+
+        case UPDATE_USUARIO:
+            return {
+                ...state,
+                usuario: action.payload
             }
 
         default:

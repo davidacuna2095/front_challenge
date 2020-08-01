@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { locale } from '../../config/i18n';
-import { Link } from 'react-router-dom';
 
 import AuthContext from '../../context/autenticacion/AuthContext';
-import AlbumContext from '../../context/albumes/AlbumContext';
 
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
 
 import './Board.scss';
 
@@ -16,22 +15,29 @@ const Navbar = () => {
     // Authcontext para obtener variables de usuario
     const authContext = useContext(AuthContext);
     const { usuario, cerrarSesion } = authContext;
-    // AlbumContext para obtener variables de album y quitarlo al cerrar sesion
-    const albumContext = useContext(AlbumContext);
-    const { setCurrentAlbum } = albumContext;
+
+    // --STATES
+    const [mostrarMenu, setMostrarMenu] = useState(false);
 
     // Translator
     const { t, i18n } = useTranslation();
+    // routing
+    let history = useHistory();
 
     // onChange de cambio de idioma de la app
     const onChangeLanguaje = (lang) => {
         i18n.changeLanguage(lang);
     };
 
-    // Acciones para cerrar sesion mas retornar currentalbum a null
+    // Configuracion del usuario
+    const userConfig = () => {
+        history.push('/usuario');
+    };
+
+    // Acciones para cerrar sesion
     const logOut = () => {
-        setCurrentAlbum(null);
         cerrarSesion();
+        history.push('/login');
     };
 
     return (
@@ -57,10 +63,36 @@ const Navbar = () => {
                 </select>
 
                 {/* Cerrar sesion */}
-                <Link
-                    to={"/login"}
-                    onClick={() => { logOut() }}
-                >{t(`HEADER.logout`)}</Link>
+                <div>
+                    <span
+                        className="userIcon"
+                        onClick={() => setMostrarMenu(!mostrarMenu)}
+                    ></span>
+                    {mostrarMenu ? <div className="dropMenu" style={{ 'right': '0' }}>
+                        <div className="userProfile">
+                            <div className="profileIcon">
+                                <span
+                                    className="userIcon"
+                                ></span>
+                            </div>
+                            <div className="userProfileLogin">
+                                <p>{usuario.name}</p>
+                            </div>
+                            <div
+                                className="optionsUser"
+                                onClick={() => userConfig()}
+                            >
+                                <span>{t('HEADER.config')}</span>
+                            </div>
+                            <div
+                                className="optionsUser logout"
+                                onClick={() => logOut()}
+                            >
+                                <span>{t('HEADER.logout')}</span>
+                            </div>
+                        </div>
+                    </div> : null}
+                </div>
             </nav>
         </header>
     )

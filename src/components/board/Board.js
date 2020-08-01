@@ -1,17 +1,16 @@
-import React, { useContext } from 'react';
-import { Switch, Route } from 'react-router-dom';
-
-import AlbumContext from '../../context/albumes/AlbumContext';
+import React from 'react';
+import { Switch, Route, useLocation } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
-import routes from '../../routes';
+import routes, { appLayout } from '../../routes';
+
+import './Board.scss';
 
 const Board = () => {
 
-    // AlbumContext para obtener variables de album y validar si se esta visualizando un album
-    const albumContext = useContext(AlbumContext);
-    const { currentAlbum } = albumContext;
+    // hook conocer current location
+    let location = useLocation();
 
     return (
         <div className="app-container">
@@ -23,7 +22,7 @@ const Board = () => {
                     <Navbar />
                     <div className="main-container">
                         {/* Routing paginas core */}
-                        {!currentAlbum ? <h3>Bienvenido al centro de tus memorias</h3> : null}
+                        {location.pathname === appLayout ? <h3>Bienvenido al centro de tus memorias</h3> : null}
                         <Switch>
                             {routes.map((route, index) => (
                                 <Route
@@ -37,6 +36,7 @@ const Board = () => {
                     </div>
                 </main>
             </div>
+            <footer></footer>
         </div>
     )
 };

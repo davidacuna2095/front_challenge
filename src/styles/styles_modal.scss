@@ -19,6 +19,15 @@ div.modalContent {
 	border-radius: 6px;
 	max-height: 400px;
 	overflow-y: scroll;
+
+	&.confirmation {
+		width: 40%;
+		max-height: 140px;
+
+		p {
+			font-weight: bold;
+		}
+	}
 }
 .closeModal {
 	color: darkolivegreen;
@@ -92,4 +101,8 @@ div.modalContent {
 	float: left;
 	background-color: ghostwhite;
 	border-radius: 1px 1px 5px 5px;
+
+	&.confirmation{
+		text-align: center;
+	}
 }

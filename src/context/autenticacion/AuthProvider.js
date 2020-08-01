@@ -9,7 +9,8 @@ import {
     LOGIN_EXITOSO,
     LOGIN_ERROR,
     OBTENER_USUARIO,
-    CERRAR_SESION
+    CERRAR_SESION,
+    UPDATE_USUARIO
 } from '../../types';
 
 const AuthProvider = (props) => {
@@ -98,7 +99,24 @@ const AuthProvider = (props) => {
         dispatch({
             type: CERRAR_SESION
         });
-    }
+    };
+
+    // Actualiza un usuario
+    const updateUser = async usuariodto => {
+
+        try {
+            const response = await axiosClient.put(`/users/${usuariodto.id}`, usuariodto);
+            const updated_usuer = response.data;
+
+            dispatch({
+                type: UPDATE_USUARIO,
+                payload: updated_usuer
+            });
+
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
         <AuthContext.Provider
@@ -109,7 +127,8 @@ const AuthProvider = (props) => {
                 mensaje: state.mensaje,
                 iniciarSesion,
                 returnAuthUser,
-                cerrarSesion
+                cerrarSesion,
+                updateUser
             }}
         >
             {props.children}

@@ -11,17 +11,21 @@ const DetalleFoto = () => {
     const fotoContext = useContext(FotoContext);
     const { currentPhoto, setDetalleFoto, editPhoto } = fotoContext;
 
+
     // translator
     const { t } = useTranslation();
+
 
     // Destructuring
     const { id, albumId, title, thumbnailUrl } = currentPhoto;
 
+
     // --STATES
     const [newTitle, setNewTitle] = useState({ title });
+    const [disabled, setDisabled] = useState(true);
 
 
-    // Actualizar state. Uso spread operator para no perder valores en caso de que hubieran mas keys
+    // Actualizar state. Spread operator para no perder valores en caso de que hubieran mas keys
     const onChangePhoto = e => {
         setNewTitle({
             ...newTitle,
@@ -33,6 +37,7 @@ const DetalleFoto = () => {
     const onSubmitPhoto = e => {
         e.preventDefault();
         editPhoto(newTitle, id);
+        setDetalleFoto(null);
     };
 
     return (
@@ -65,20 +70,29 @@ const DetalleFoto = () => {
                                 onSubmit={e => onSubmitPhoto(e)}
                             >
                                 <label className="labelFoto" htmlFor="title">{t('FOTO.title')}</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="title"
-                                    autoComplete="off"
-                                    value={newTitle.title}
-                                    onChange={e => onChangePhoto(e)}
-                                />
-                                <input
-                                    type="submit"
-                                    style={{ 'marginTop': '30px' }}
-                                    className="btn btn-primary btn-block"
-                                    value={t('GENERAL.save')}
-                                />
+                                <div className="container-icon left-addon">
+                                    <span
+                                        className="iconEdit"
+                                        onClick={() => setDisabled(!disabled)}
+                                    ></span>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        name="title"
+                                        autoComplete="off"
+                                        value={newTitle.title}
+                                        onChange={e => onChangePhoto(e)}
+                                        disabled={disabled}
+                                    />
+                                </div>
+                                {!disabled ?
+                                    <input
+                                        type="submit"
+                                        style={{ 'marginTop': '30px' }}
+                                        className="btn btn-primary btn-block"
+                                        value={t('GENERAL.save')}
+                                    />
+                                    : null}
                             </form>
                         </div>
                     </div>
