@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import { useHistory } from 'react-router-dom';
 
 import AlbumContext from '../../context/albumes/AlbumContext';
@@ -32,6 +34,10 @@ const Album = ({ album }) => {
             className={`${isCurrentAlbum(currentAlbum, id)}`}
         ><span className={`${isCurrentAlbum(currentAlbum, id)}`}>{title}</span></li>
     )
+};
+
+Album.propTypes = {
+    album: PropTypes.object.isRequired
 };
 
 export default Album;

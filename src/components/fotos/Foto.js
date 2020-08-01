@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import FotoContext from '../../context/fotos/FotoContext';
 import { useTranslation } from 'react-i18next';
@@ -38,7 +39,6 @@ const Foto = ({ foto }) => {
 
     // Detectar cambio en respuesta para eliminar
     useEffect(() => {
-        console.log(respuesta, id)
         if (respuesta) {
             deletePhoto(id);
         }
@@ -76,6 +76,10 @@ const Foto = ({ foto }) => {
             </div>
         </div>
     )
+};
+
+Foto.propTypes = {
+    foto: PropTypes.object.isRequired
 };
 
 export default Foto;
