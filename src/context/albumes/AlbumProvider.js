@@ -1,13 +1,14 @@
-
 import React, { useReducer } from 'react';
 import {
     LISTAR_ALBUMES,
     AGREGAR_ALBUM,
-    ALBUM_ACTUAL
+    ALBUM_ACTUAL,
+    LOADING_ALBUM
 } from '../../types';
 
 import AlbumContext from './AlbumContext';
 import albumReducer from './albumReducer.js';
+import Loader from '../../utils/loader/Loader';
 import axiosClient from '../../config/axios';
 
 const AlbumProvider = (props) => {
@@ -15,7 +16,8 @@ const AlbumProvider = (props) => {
     // State inicial
     const initialState = {
         albums: [],
-        currentAlbum: null
+        currentAlbum: null,
+        loading: false
     };
 
     // Usar Reducer: Le paso el reducer y estado inicial
@@ -25,7 +27,7 @@ const AlbumProvider = (props) => {
 
     // [GET] Obtener albumes
     const getAlbums = async userId => {
-
+        setLoading();
         try {
             const response = await axiosClient.get(`/albums?userId=${userId}`);
 
@@ -40,7 +42,7 @@ const AlbumProvider = (props) => {
 
     // [POST] Añadir album a usuario actual
     const addAlbum = async album => {
-
+        setLoading();
         try {
             const response = await axiosClient.post(`/albums?userId=${album.userId}`, album);
 
@@ -61,12 +63,20 @@ const AlbumProvider = (props) => {
         });
     };
 
+    // Para poner loader en caso de latencia en peticion
+    const setLoading = () => {
+        dispatch({
+            type: LOADING_ALBUM
+        });
+    };
+
     // Variables y funciones que estarán disponibles en scope del context
-    return (
+    return (<>
         <AlbumContext.Provider
             value={{
                 albums: state.albums,
                 currentAlbum: state.currentAlbum,
+                loading: state.loading,
                 getAlbums,
                 addAlbum,
                 setCurrentAlbum
@@ -74,6 +84,7 @@ const AlbumProvider = (props) => {
         >
             {props.children}
         </AlbumContext.Provider>
+        <Loader mostrar={state.loading} /></>
     )
 
 }

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { locale } from '../../config/i18n';
 
 import AuthContext from '../../context/autenticacion/AuthContext';
+import AlbumContext from '../../context/albumes/AlbumContext';
 
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
@@ -15,6 +16,9 @@ const Navbar = () => {
     // Authcontext para obtener variables de usuario
     const authContext = useContext(AuthContext);
     const { usuario, cerrarSesion } = authContext;
+    // Album context
+    const albumContext = useContext(AlbumContext);
+    const { setCurrentAlbum } = albumContext;
 
     // --STATES
     const [mostrarMenu, setMostrarMenu] = useState(false);
@@ -31,12 +35,14 @@ const Navbar = () => {
 
     // Configuracion del usuario
     const userConfig = () => {
+        setMostrarMenu(false);
         history.push('/usuario');
     };
 
     // Acciones para cerrar sesion
     const logOut = () => {
         cerrarSesion();
+        setCurrentAlbum(null);
         history.push('/login');
     };
 

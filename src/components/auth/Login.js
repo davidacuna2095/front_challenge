@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../context/autenticacion/AuthContext';
-import useAlert from '../../hooks/useAlert';
+import ManagementContext from '../../context/management/ManagementContext';
 
 // helper para validar si un campo esta incompleto
 import { revisarAlerta } from '../../helpers/helpers';
@@ -15,6 +15,9 @@ const Login = () => {
     // Authcontext para obtener variables de usuario
     const authContext = useContext(AuthContext);
     const { mensaje, autenticado, iniciarSesion } = authContext;
+    // Mngmt context. Handler de alertas
+    const managementContext = useContext(ManagementContext);
+    const { mostrarAlerta } = managementContext;
 
 
     // hook de history de react-router-dom
@@ -32,22 +35,13 @@ const Login = () => {
     const { username, password } = data;
 
 
-    // -- CUSTOM HOOKS
-    // Custom hook para mostrar alertas
-    const [mostrarAlerta, Alerta] = useAlert({});
-
-
     // useEffect para manejar usuario autenticado
     useEffect(() => {
         // Si esta autenticado se indica ruta a la cual deberia navegar
-        if (autenticado) {
-            history.push('/board');
-        }
+        if (autenticado) history.push('/board');
 
         // Si hubo error de autenticacion mostrar error
-        if (mensaje) {
-            mostrarAlerta(mensaje);
-        }
+        if (mensaje) mostrarAlerta(mensaje);
         // eslint-disable-next-line
     }, [mensaje, autenticado, history]);
 
@@ -75,10 +69,6 @@ const Login = () => {
 
     return (
         <Fragment>
-
-            {/* Mensaje de error de useAlert */}
-            <Alerta />
-
             <div className="form-login">
                 <div className="login-container">
                     <h1 className="title">Memories<span>Login</span></h1>

@@ -17,6 +17,12 @@
         "es": "Español",
         "en": "Ingles"
     },
+    "BOARD": {
+        "info": "Hola, mira lo que te has perdido...",
+        "empty": "Todo en orden!",
+        "completo": "Completo",
+        "incompleto": "Incompleto"
+    },
     "ALERTS": {
         "required": "Todos los campos son obligatorios.",
         "deletePhotoSuc": "Foto eliminada correctamente.",

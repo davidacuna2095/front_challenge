@@ -3,7 +3,7 @@
 export const LISTAR_ALBUMES = "LISTAR_ALBUMES";
 export const AGREGAR_ALBUM = "AGREGAR_ALBUM";
 export const ALBUM_ACTUAL = "ALBUM_ACTUAL";
-export const ELIMINAR_ALBUM = "ELIMINAR_ALBUM";
+export const LOADING_ALBUM = "LOADING_ALBUM";
 
 export const LOGIN_EXITOSO = "LOGIN_EXITOSO";
 export const LOGIN_ERROR = "LOGIN_ERROR";
@@ -16,3 +16,7 @@ export const ELIMINAR_FOTO = "ELIMINAR_FOTO";
 export const ALERTA_FOTO = "ALERTA_FOTO";
 export const DETALLE_FOTO = "DETALLE_FOTO";
 export const EDITAR_FOTO = "EDITAR_FOTO";
+export const LOADING_FOTO = "LOADING_FOTO";
+
+export const MOSTRAR_ALERTA = "MOSTRAR_ALERTA";
+export const OCULTAR_ALERTA = "OCULTAR_ALERTA";

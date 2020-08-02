@@ -32,7 +32,9 @@ const Album = ({ album }) => {
         <li
             onClick={() => onClickAlbum()}
             className={`${isCurrentAlbum(currentAlbum, id)}`}
-        ><span className={`${isCurrentAlbum(currentAlbum, id)}`}>{title}</span></li>
+        ><span
+            className={`${isCurrentAlbum(currentAlbum, id)}`}
+        >{title}</span></li>
     )
 };
 

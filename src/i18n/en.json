@@ -17,6 +17,12 @@
         "es": "Spanish",
         "en": "English"
     },
+    "BOARD": {
+        "info": "Hi, check what you've missed",
+        "empty": "Nothing yo do!",
+        "completo": "Complete",
+        "incompleto": "Incomplete"
+    },
     "ALERTS": {
         "required": "All form-fields are requiered.",
         "deletePhotoSuc": "Photo successfully removed.",

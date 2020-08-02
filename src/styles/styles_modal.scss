@@ -20,9 +20,22 @@ div.modalContent {
 	max-height: 400px;
 	overflow-y: scroll;
 
+	&.loader {
+		background-color: transparent;
+	}
+
 	&.confirmation {
 		width: 40%;
 		max-height: 140px;
+
+		button {
+			background-color: darkred;
+			border: none;
+
+			&.confirm {
+				background-color:darkgreen
+			}
+		}
 
 		p {
 			font-weight: bold;
@@ -34,6 +47,7 @@ div.modalContent {
 	float: right;
 	font-size: 28px;
 	font-weight: bold;
+	padding: 10px;
 }
 
 .closeModal:hover,
@@ -59,7 +73,11 @@ div.modalContent {
 	text-decoration: none;
 	position: absolute;
 	top: 12px;
-	left: 0
+	left: 0;
+
+	&.loader {
+		background-color: transparent;
+	}
 }
 
 .modalContent .closeModal span:first-child {
@@ -101,6 +119,10 @@ div.modalContent {
 	float: left;
 	background-color: ghostwhite;
 	border-radius: 1px 1px 5px 5px;
+
+	&.loader {
+		background-color: transparent;
+	}
 
 	&.confirmation{
 		text-align: center;

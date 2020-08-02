@@ -1,7 +1,8 @@
 import {
     LISTAR_ALBUMES,
     AGREGAR_ALBUM,
-    ALBUM_ACTUAL
+    ALBUM_ACTUAL,
+    LOADING_ALBUM
 } from '../../types';
 
 export default (state, action) => {
@@ -11,6 +12,7 @@ export default (state, action) => {
         case LISTAR_ALBUMES:
             return {
                 ...state,
+                loading: false,
                 albums: action.payload
             }
 
@@ -18,6 +20,7 @@ export default (state, action) => {
         case AGREGAR_ALBUM:
             return {
                 ...state,
+                loading: false,
                 albums: [
                     action.payload,
                     ...state.albums
@@ -29,6 +32,12 @@ export default (state, action) => {
             return {
                 ...state,
                 currentAlbum: action.payload
+            }
+
+        case LOADING_ALBUM:
+            return {
+                ...state,
+                loading: true
             }
 
         default:

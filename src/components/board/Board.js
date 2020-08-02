@@ -3,6 +3,7 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 
 import Sidebar from './Sidebar';
 import Navbar from './Navbar';
+import Todos from '../todo/Todos';
 import routes, { appLayout } from '../../routes';
 
 import './Board.scss';
@@ -22,7 +23,7 @@ const Board = () => {
                     <Navbar />
                     <div className="main-container">
                         {/* Routing paginas core */}
-                        {location.pathname === appLayout ? <h3>Bienvenido al centro de tus memorias</h3> : null}
+                        {location.pathname === appLayout ? <Todos /> : null}
                         <Switch>
                             {routes.map((route, index) => (
                                 <Route

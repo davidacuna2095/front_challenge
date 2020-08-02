@@ -1,9 +1,9 @@
 import React, { Fragment, useContext, useState, useEffect } from 'react';
 
 import AuthContext from '../../context/autenticacion/AuthContext';
+import ManagementContext from '../../context/management/ManagementContext';
 
 import { useTranslation } from 'react-i18next';
-import useAlert from '../../hooks/useAlert';
 
 // helper para validar si un campo esta incompleto
 import { revisarAlerta } from '../../helpers/helpers';
@@ -14,14 +14,13 @@ const Usuario = () => {
     // Authcontext para obtener variables de usuario
     const authContext = useContext(AuthContext);
     const { usuario, updateUser } = authContext;
+    // Mngmt context. Handler de alertas
+    const managementContext = useContext(ManagementContext);
+    const { mostrarAlerta } = managementContext;
+
 
     // Objeto base, para manejo de latencia de context y evitar null
     const usuarioModel = { name: '', username: '', email: '', phone: '', website: '' }
-
-
-    // -- CUSTOM HOOKS
-    // Custom hook para mostrar alertas
-    const [mostrarAlerta, Alerta] = useAlert({});
 
 
     // --STATES
@@ -79,7 +78,6 @@ const Usuario = () => {
                 className="col-12"
                 onSubmit={e => onSubmitUser(e)}
             >
-                <Alerta />
                 <div className="row mt-4">
                     <div className="col-6">
                         <label htmlFor="name">{t('USUARIO.name')}</label>

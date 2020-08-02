@@ -1,25 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import FotoContext from '../../context/fotos/FotoContext';
 import { useTranslation } from 'react-i18next';
 
-import useAlert from '../../hooks/useAlert';
-import useConfirmation from '../../hooks/useConfirmation';
-
 import './Fotos.scss';
 
-const Foto = ({ foto }) => {
+const Foto = ({ foto, deleteCurrentPhoto }) => {
 
     // Foto context. Destructuring state y functions necesarios
     const fotoContext = useContext(FotoContext);
-    const { mensaje, deletePhoto, mostrarAlertaFoto, setDetalleFoto } = fotoContext;
-
-    // -- CUSTOM HOOKS
-    // Custom hook para mostrar alertas
-    const [mostrarAlerta, Alerta] = useAlert({});
-    // Preguntar para borrar
-    const [respuesta, askConfirmation, Confirmation] = useConfirmation('');
+    const { setDetalleFoto } = fotoContext;
 
     // translator
     const { t } = useTranslation();
@@ -27,33 +18,13 @@ const Foto = ({ foto }) => {
     // Destructuring de foto
     const { id, title, thumbnailUrl } = foto;
 
-    // Detectar cambio en mensaje de alerta
-    useEffect(() => {
-        if (mensaje) {
-            mostrarAlerta(mensaje);
-        }
-        // Para limpiar state de alerta
-        mostrarAlertaFoto(null);
-        // eslint-disable-next-line
-    }, [mensaje]);
-
-    // Detectar cambio en respuesta para eliminar
-    useEffect(() => {
-        if (respuesta) {
-            deletePhoto(id);
-        }
-        // eslint-disable-next-line
-    }, [respuesta]);
-
+    // Handles photo escogicada para eliminar.
     const onClickDelete = () => {
-        askConfirmation('confirmardelimg');
-    }
+        deleteCurrentPhoto(id);
+    };
 
     return (
         <div className="col-md-2 col-sm-6 mb-3">
-            {/* De useAlert */}
-            <Alerta />
-            <Confirmation />
             <div className="card">
                 <img alt={`foto${id}`} className="card-img-top" src={thumbnailUrl} />
 
@@ -79,7 +50,8 @@ const Foto = ({ foto }) => {
 };
 
 Foto.propTypes = {
-    foto: PropTypes.object.isRequired
+    foto: PropTypes.object.isRequired,
+    deleteCurrentPhoto: PropTypes.func.isRequired
 };
 
 export default Foto;

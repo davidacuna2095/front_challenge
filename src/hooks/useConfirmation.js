@@ -9,18 +9,22 @@ const useConfirmation = (mensajeInicial) => {
     const [mostrar, setMostrar] = useState(false);
     const [mensaje, setMensaje] = useState(mensajeInicial);
     const [respuesta, setRespuesta] = useState(null);
+    const [detalle, setDetalle] = useState(null);
 
     // translator
     const { t } = useTranslation();
 
     // Setea mensaje de alerta, y setea timeput para quitar alerta despues de 4 segundos
-    const askConfirmation = mensajeAlerta => {
+    const askConfirmation = (mensajeAlerta, id) => {
         setMostrar(true);
+        setDetalle(id);
         setMensaje(mensajeAlerta);
     }
 
+    // Si confirma envia como respuesta el detalle de la misma. En este caso el id.
     const confirm = () => {
-        setRespuesta(true);
+        setRespuesta(detalle);
+        setDetalle(null);
     }
 
     // Elemento de alerta que muestra en el dom
@@ -39,7 +43,7 @@ const useConfirmation = (mensajeInicial) => {
                             <div className="col-6">
                                 <button
                                     type="button"
-                                    className="btn btn-primary btn-block"
+                                    className="btn btn-primary btn-block confirm"
                                     onClick={() => confirm()}
                                 >{t('GENERAL.si')}</button>
                             </div>
@@ -57,7 +61,7 @@ const useConfirmation = (mensajeInicial) => {
             : null
     );
 
-    return [respuesta, askConfirmation, Confirmation];
+    return [respuesta, askConfirmation, setMostrar, Confirmation];
 
 }
 

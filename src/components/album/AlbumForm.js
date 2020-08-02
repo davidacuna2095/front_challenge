@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import AlbumContext from '../../context/albumes/AlbumContext';
 import AuthContext from '../../context/autenticacion/AuthContext';
-import useAlert from '../../hooks/useAlert';
+import ManagementContext from '../../context/management/ManagementContext';
 
 // helper para validar si un campo esta incompleto
 import { revisarAlerta } from '../../helpers/helpers';
@@ -19,6 +19,9 @@ const AlbumForm = () => {
     // Album context. Destructuring funcion para patch del album
     const albumContext = useContext(AlbumContext);
     const { addAlbum } = albumContext;
+    // Mngmt context. Handler de alertas
+    const managementContext = useContext(ManagementContext);
+    const { mostrarAlerta } = managementContext;
 
 
     // -- STATES
@@ -33,11 +36,6 @@ const AlbumForm = () => {
 
     // Object destructuring para get title
     const { title } = album;
-
-
-    // -- CUSTOM HOOKS
-    // Custom hook para mostrar alertas
-    const [mostrarAlerta, Alerta] = useAlert({});
 
 
     // translator
@@ -97,9 +95,6 @@ const AlbumForm = () => {
                     onClick={() => mostrarFormulario()}
                 ><span> {mostrar ? "-" : "+"} </span></button>
             </div>
-
-            {/* Alerta de custum hook useAlert */}
-            <Alerta />
 
             {/* ternario para mostrar formulario segun state */}
             {mostrar

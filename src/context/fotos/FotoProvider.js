@@ -5,11 +5,13 @@ import {
     ELIMINAR_FOTO,
     ALERTA_FOTO,
     DETALLE_FOTO,
-    EDITAR_FOTO
+    EDITAR_FOTO,
+    LOADING_FOTO
 } from '../../types';
 
 import FotoContext from './FotoContext';
 import fotoReducer from './fotoReducer.js';
+import Loader from '../../utils/loader/Loader';
 import axiosClient from '../../config/axios';
 
 const FotoProvider = (props) => {
@@ -18,7 +20,8 @@ const FotoProvider = (props) => {
     const initialState = {
         fotos: [],
         currentPhoto: null,
-        mensaje: null
+        mensaje: null,
+        loading: false
     };
 
     // Usar Reducer: Le paso el reducer y estado inicial
@@ -28,7 +31,7 @@ const FotoProvider = (props) => {
 
     // [GET] Obtener fotos del album actual
     const getPhotos = async albumId => {
-
+        setLoading();
         try {
             const response = await axiosClient.get(`/photos?albumId=${albumId}`);
 
@@ -43,6 +46,7 @@ const FotoProvider = (props) => {
 
     // [DELETE] Borra foto con idPhoto
     const deletePhoto = async idPhoto => {
+        setLoading();
         try {
             const response = await axiosClient.delete(`/photos/${idPhoto}`);
             if (response.status !== 200) {
@@ -80,6 +84,7 @@ const FotoProvider = (props) => {
 
     // [PATCH] Actualiza valor especifico de la foto. En este caso el titulo
     const editPhoto = async (data, id) => {
+        setLoading();
         try {
             const response = await axiosClient.patch(`/photos/${id}`, data);
 
@@ -95,8 +100,15 @@ const FotoProvider = (props) => {
         }
     }
 
+    // Para poner loader en caso de latencia en peticion
+    const setLoading = () => {
+        dispatch({
+            type: LOADING_FOTO
+        });
+    };
+
     // Variables y funciones que estarán disponibles en scope del context
-    return (
+    return (<>
         <FotoContext.Provider
             value={{
                 fotos: state.fotos,
@@ -111,6 +123,7 @@ const FotoProvider = (props) => {
         >
             {props.children}
         </FotoContext.Provider>
+        <Loader mostrar={state.loading} /></>
     )
 
 }

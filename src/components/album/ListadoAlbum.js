@@ -9,10 +9,10 @@ import './Album.scss';
 const ListadoAlbum = () => {
 
     // -- CONTEXTS
-    // Context de proyecto. Destructuring de states/functions que se precisan
+    // Context de autenticacion. Destructuring de states/functions que se precisan
     const authContext = useContext(AuthContext);
     const { usuario } = authContext;
-
+    // Context. get albums
     const albumContext = useContext(AlbumContext);
     const { albums, getAlbums } = albumContext;
 
@@ -25,17 +25,13 @@ const ListadoAlbum = () => {
 
     // Detectar cambio de usuario
     useEffect(() => {
-        if (usuario) {
-            getAlbums(usuario.id);
-        }
+        if (usuario) getAlbums(usuario.id);
         // eslint-disable-next-line
     }, [usuario]);
 
     // Detectar cambio de albumes
     useEffect(() => {
-        if (albums) {
-            setFilteredValues(albums);
-        }
+        if (albums) setFilteredValues(albums);
         // eslint-disable-next-line
     }, [albums]);
 

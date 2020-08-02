@@ -10,9 +10,11 @@ import Board from './components/board/Board';
 // -- CONTEXTS
 import AlbumProvider from './context/albumes/AlbumProvider';
 import AuthProvider from './context/autenticacion/AuthProvider';
-import FotoContext from './context/fotos/FotoProvider';
+import FotoProvider from './context/fotos/FotoProvider';
+import ManagementProvider from './context/management/ManagementProvider';
 
 import './App.css';
+import Alert from './utils/alert/Alert';
 
 function App() {
   return (
@@ -20,16 +22,19 @@ function App() {
     // RutaPrivada para acceso a routes solo de usuarios autenticados
     <Router>
       <Suspense fallback={null}>
-        <Switch>
-          <AuthProvider>
-            <Route path="/login" component={Login} />
-            <AlbumProvider>
-              <FotoContext>
-                <RutaPrivada path="/" component={Board} />
-              </FotoContext>
-            </AlbumProvider>
-          </AuthProvider>
-        </Switch>
+        <ManagementProvider>
+          <Switch>
+            <AuthProvider>
+              <Route path="/login" component={Login} />
+              <AlbumProvider>
+                <FotoProvider>
+                  <RutaPrivada path="/" component={Board} />
+                </FotoProvider>
+              </AlbumProvider>
+            </AuthProvider>
+          </Switch>
+          <Alert />
+        </ManagementProvider>
       </Suspense>
     </Router>
   );
