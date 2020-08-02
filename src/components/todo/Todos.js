@@ -3,11 +3,14 @@ import React, { useState, useEffect, useContext, Fragment } from 'react';
 import AuthContext from '../../context/autenticacion/AuthContext';
 import ManagementContext from '../../context/management/ManagementContext';
 
+import useFilter from '../../hooks/useFilter';
+
 import Todo from './Todo';
 import axiosClient from '../../config/axios';
 import { useTranslation } from 'react-i18next';
 
 import './Todo.scss';
+import imgKeeper from '../../assets/keeper.png';
 
 const Todos = () => {
 
@@ -22,9 +25,15 @@ const Todos = () => {
     // Translator
     const { t } = useTranslation();
 
+
     // --STATES
     // Almacena todos
     const [todos, setTodos] = useState([]);
+
+
+    // -- CUSTOM HOOKS
+    // Filtrado de contenido
+    const [filteredValues, Filtrado] = useFilter(todos, 'todoUseFilter', 'labelTodo');
 
     // Usuario logueado
     useEffect(() => {
@@ -54,18 +63,19 @@ const Todos = () => {
 
     return (
         <Fragment>
-            <h3>{t('BOARD.info')}</h3>
             <div className="row">
-                <div className="col-4">
-
+                <div className="col-4 imgKeep">
+                    <img alt='fototodo' className="card-img-top" src={imgKeeper} />
                 </div>
                 <div className="col-8">
+                    <div style={{ "maxWidth": "600px", "margin": "0 auto" }}>
+                        <Filtrado />
+                    </div>
                     <div className="todos-container mt-4">
-
                         <ul className="todos">
-                            {todos.length > 0
+                            {filteredValues.length > 0
                                 ?
-                                todos.map(todo => (
+                                filteredValues.map(todo => (
                                     <Todo
                                         key={todo.id}
                                         todo={todo}

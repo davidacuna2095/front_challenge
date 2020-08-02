@@ -5,7 +5,9 @@
         "save": "Guardar",
         "update": "Actualizar",
         "si": "Sí",
-        "no": "No"
+        "no": "No",
+        "labelAlbum": "Filtra acá",
+        "labelTodo": "Tus To-Do"
     },
     "HEADER": {
         "bienvenido": "Bienvenido",

@@ -5,7 +5,9 @@
         "save": "Save",
         "update": "Update",
         "si": "Yes",
-        "no": "No"
+        "no": "No",
+        "labelAlbum": "Filter here",
+        "labelTodo": "Your To-Dos"
     },
     "HEADER": {
         "bienvenido": "Welcome",
