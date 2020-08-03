@@ -36,6 +36,7 @@ const Navbar = () => {
     // Configuracion del usuario
     const userConfig = () => {
         setMostrarMenu(false);
+        setCurrentAlbum(null);
         history.push('/usuario');
     };
 

@@ -1,4 +1,4 @@
-import React, { useContext, Fragment, useEffect } from 'react';
+import React, { useContext, Fragment, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import AlbumContext from '../../context/albumes/AlbumContext';
@@ -6,6 +6,7 @@ import FotoContext from '../../context/fotos/FotoContext';
 import ManagementContext from '../../context/management/ManagementContext';
 
 import DetalleFoto from '../../components/fotos/DetalleFoto';
+import NuevaFoto from '../../components/fotos/NuevaFoto';
 import Foto from './Foto';
 
 import usePaginator from '../../hooks/usePaginator.js';
@@ -35,6 +36,10 @@ const ListadoFotos = () => {
     const [currentContent, Paginar] = usePaginator(12, fotos);
     // Custom hook Preguntar para borrar
     const [respuesta, askConfirmation, setMostrar, Confirmation] = useConfirmation('');
+
+
+    // --STATES
+    const [creando, setCreando] = useState(false);
 
 
     // Hook useParams de react-router-dom para detectar cambio de param id del album
@@ -67,15 +72,23 @@ const ListadoFotos = () => {
         // eslint-disable-next-line
     }, [respuesta]);
 
+    // Mostar mensaje de confirmacion
     const deleteCurrentPhoto = idPhoto => {
         askConfirmation('confirmardelimg', idPhoto);
     }
 
     return (
         <Fragment>
+            <div className={`col-12`}>
+                <button
+                    type="button"
+                    className={`add-button`}
+                    onClick={() => setCreando(true)}
+                ><span className="fotoAdd"> {"+"} </span></button>
+            </div>
             {/* De useConfirmation */}
             <Confirmation />
-
+            {creando ? <NuevaFoto setCreando={setCreando} albumId={id} /> : null}
             {currentPhoto ? <DetalleFoto /> : null}
             <h3>{t('ALBUM.tusfotos')}</h3>
 
