@@ -30,6 +30,7 @@ const Album = ({ album }) => {
     return (
         // Muestra info del album y valida si es el que se esta visualizando actualmente
         <li
+            data-testid="albumDetail"
             onClick={() => onClickAlbum()}
             className={`${isCurrentAlbum(currentAlbum, id)}`}
         ><span

@@ -73,6 +73,7 @@ const Login = () => {
                 <div className="login-container">
                     <h1 className="title">Memories<span>Login</span></h1>
                     <form
+                        data-testid="formLogin"
                         onSubmit={(e) => doLogin(e)}
                     >
                         {/* Form usuario, hace uso de helper revisar alerta para determinar clase de error */}
@@ -104,10 +105,10 @@ const Login = () => {
                             />
                         </div>
                         <div className="login-form">
-                            <input
+                            <button
                                 type="submit"
                                 className="btn btn-primary btn-block"
-                                value="Iniciar Sesión" />
+                            >Iniciar Sesión</button>
                         </div>
                     </form>
                 </div>
