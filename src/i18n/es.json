@@ -1,7 +1,7 @@
 {
     "GENERAL": {
         "add": "Agregar",
-        "editar": "Editar",
+        "ver": "Ver",
         "save": "Guardar",
         "update": "Actualizar",
         "si": "Sí",
@@ -43,7 +43,11 @@
         "foto": "Foto",
         "idAlbum": "Album id",
         "title": "Titulo",
-        "nueva": "Nueva Foto"
+        "thumbnailUrl": "Thumbnail Url",
+        "nueva": "Nueva Foto",
+        "url": "Url Foto",
+        "placetitulo": "titulo de la foto",
+        "placeurl": "ej. https://photos.com/z/img.jpg"
     },
     "USUARIO": {
         "name": "Nombre",

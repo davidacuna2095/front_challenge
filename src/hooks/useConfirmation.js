@@ -43,14 +43,14 @@ const useConfirmation = (mensajeInicial) => {
                             <div className="col-6">
                                 <button
                                     type="button"
-                                    className="btn btn-primary btn-block confirm"
+                                    className="btn btn-outline-success btn-block confirm"
                                     onClick={() => confirm()}
                                 >{t('GENERAL.si')}</button>
                             </div>
                             <div className="col-6">
                                 <button
                                     type="button"
-                                    className="btn btn-primary btn-block"
+                                    className="btn btn-outline-danger btn-block"
                                     onClick={() => setMostrar(false)}
                                 >{t('GENERAL.no')}</button>
                             </div>

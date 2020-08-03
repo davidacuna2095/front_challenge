@@ -35,10 +35,10 @@ const Foto = ({ foto, deleteCurrentPhoto }) => {
                     ></span>
                     <button
                         type="button"
-                        className="btn btn-primary"
+                        className="btn btn-outline-info"
                         style={{ 'float': 'right' }}
                         onClick={() => setDetalleFoto(foto)}
-                    >{t('GENERAL.editar')}</button>
+                    >{t('GENERAL.ver')}</button>
                 </div>
 
                 <span

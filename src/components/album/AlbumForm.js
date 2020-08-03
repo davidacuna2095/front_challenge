@@ -5,8 +5,7 @@ import AlbumContext from '../../context/albumes/AlbumContext';
 import AuthContext from '../../context/autenticacion/AuthContext';
 import ManagementContext from '../../context/management/ManagementContext';
 
-// helper para validar si un campo esta incompleto
-import { revisarAlerta } from '../../helpers/helpers';
+import Input from '../../utils/input/Input';
 
 import './Album.scss';
 
@@ -104,23 +103,27 @@ const AlbumForm = () => {
                     onSubmit={onSubmitAlbum}
                 >
                     {/* Se hace uso de helper para validadr uso de class para sombrear campo con alert */}
-                    <input
-                        className={`form-control ${revisarAlerta(shadow, title)}`}
-                        type="text"
-                        name="title"
-                        placeholder={t('ALBUM.nombre')}
+                    <Input
+                        containerClass=""
+                        tipo="text"
                         value={title}
-                        autoComplete="off"
-                        onChange={(e) => onChangeAlbum(e)}
+                        name="title"
+                        placeholder="ALBUM.nombre"
+                        inputClass="form-control"
+                        shadow={shadow}
+                        onChange={onChangeAlbum}
+                        hasLabel={false}
                     />
 
                     {/* Submit para enviar form */}
-                    <input
-                        type="submit"
-                        className="btn btn-block btn-primary"
-                        value={t('GENERAL.add')}
+                    <Input
+                        containerClass=""
+                        tipo="submit"
+                        value="GENERAL.add"
+                        inputClass="btn btn-block btn-outline-primary"
+                        shadow={false}
+                        hasLabel={false}
                     />
-
                 </form>
                 :
                 null
