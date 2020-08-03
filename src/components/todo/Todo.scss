@@ -1,0 +1,59 @@
+.todos-container{
+    max-height: 600px;
+    overflow-y: scroll;
+
+    ul {
+        max-width: 600px;
+        margin: 0 auto;
+        
+        li {
+            display: flex;
+            justify-content: space-between;
+            background-color: var(--blanco);
+            padding: .5rem 2rem;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-radius: 0.2rem;
+            -webkit-box-shadow: 0px 4px 10px -3px rgba(117, 117, 117, 1);
+            -moz-box-shadow: 0px 4px 10px -3px rgba(117, 117, 117, 1);
+            box-shadow: 0px 4px 10px -3px rgba(117, 117, 117, 1);
+    
+            p {
+                font-size: 1rem;
+                flex: 1;
+                padding-right: 2rem;
+                color: #2F4F4F
+            }
+
+            .completado button {
+                font-weight: 900;
+                font-family: var(--textFont);
+                font-size: 0.8rem;
+                padding: .5rem;
+                border-radius: .5rem;
+                cursor: pointer;
+                border: none;
+                min-width: 110px;
+            }
+        }
+    }
+}
+
+.completo {
+	background-color: rgba(154, 252, 154, .3);
+	color: grey;
+}
+
+.incompleto {
+	background-color: rgba(255, 178, 178, .4);
+	color: grey;
+}
+
+
+.completado {
+	margin-right: 1rem;
+}
+
+.imgKeep img.card-img-top{
+    margin-top: 60px;
+}

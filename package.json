@@ -16,10 +16,19 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect",
+      "./src/setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(css|less|scss|png)$": "identity-obj-proxy"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +44,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

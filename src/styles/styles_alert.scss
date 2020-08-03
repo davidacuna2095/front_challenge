@@ -1,0 +1,34 @@
+.alerta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0.5rem 3rem;
+    min-width: 350px;
+    border-radius: 1rem;
+    font-family: serif;
+    font-weight: 600;
+    // text-transform: uppercase;
+    font-size: 1.2rem;
+    text-align: center;
+    width: 100%;
+    z-index: +10000;
+  }
+  @media (min-width:768px) {
+    .alerta {
+        width: auto;
+        top: 50px;
+        /* right: 10px; */
+        /* left: auto; */
+        margin-left: 20px;
+    }
+  }
+  
+  .alerta-ok {
+    background-color: rgb(109, 211, 109);
+    color: rgb(2, 103, 2);
+  }
+  .alerta-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }

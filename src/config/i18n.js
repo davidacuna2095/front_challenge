@@ -3,6 +3,8 @@ import esTranslation from '../i18n/es.json';
 
 
 export const defaultLocale = "es";
+
+// Langs disponibles, con map a json de isiomas correspondiente
 export const resources = {
     en: {
         translation: enTranslation,
@@ -12,6 +14,7 @@ export const resources = {
     },
 };
 
+// Array con detalles de cada idioma
 export const locale = [
     {
         name: 'Español',
