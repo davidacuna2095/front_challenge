@@ -4,9 +4,7 @@ import AuthContext from '../../context/autenticacion/AuthContext';
 import ManagementContext from '../../context/management/ManagementContext';
 
 import { useTranslation } from 'react-i18next';
-
-// helper para validar si un campo esta incompleto
-import { revisarAlerta } from '../../helpers/helpers';
+import Input from '../../utils/input/Input';
 
 const Usuario = () => {
 
@@ -79,69 +77,80 @@ const Usuario = () => {
                 onSubmit={e => onSubmitUser(e)}
             >
                 <div className="row mt-4">
-                    <div className="col-6">
-                        <label htmlFor="name">{t('USUARIO.name')}</label>
-                        <input
-                            type="text"
-                            name="name"
-                            className={`form-control ${revisarAlerta(shadow, name)}`}
-                            value={name}
-                            onChange={e => saveData(e)}
-                        />
-                    </div>
-                    <div className="col-6">
-                        <label htmlFor="username">{t('USUARIO.username')}</label>
-                        <input
-                            type="text"
-                            name="username"
-                            className={`form-control ${revisarAlerta(shadow, username)}`}
-                            value={username}
-                            onChange={e => saveData(e)}
-                        />
-                    </div>
+                    <Input
+                        containerClass="col-6"
+                        labelClass=""
+                        labelValue="USUARIO.name"
+                        tipo="text"
+                        value={name}
+                        name="name"
+                        placeholder="USUARIO.name"
+                        inputClass="form-control"
+                        shadow={shadow}
+                        onChange={saveData}
+                    />
+                    <Input
+                        containerClass="col-6"
+                        labelClass=""
+                        labelValue="USUARIO.username"
+                        tipo="text"
+                        value={username}
+                        name="username"
+                        placeholder="USUARIO.username"
+                        inputClass="form-control"
+                        shadow={shadow}
+                        onChange={saveData}
+                    />
                 </div>
                 <div className="row mt-4">
-                    <div className="col-12">
-                        <label htmlFor="email">{t('USUARIO.email')}</label>
-                        <input
-                            type="text"
-                            name="email"
-                            className={`form-control ${revisarAlerta(shadow, email)}`}
-                            value={email}
-                            onChange={e => saveData(e)}
-                        />
-                    </div>
+                    <Input
+                        containerClass="col-12"
+                        labelClass=""
+                        labelValue="USUARIO.email"
+                        tipo="text"
+                        value={email}
+                        name="email"
+                        placeholder="USUARIO.email"
+                        inputClass="form-control"
+                        shadow={shadow}
+                        onChange={saveData}
+                    />
                 </div>
                 <div className="row mt-2">
-                    <div className="col-6">
-                        <label htmlFor="phone">{t('USUARIO.phone')}</label>
-                        <input
-                            type="text"
-                            name="phone"
-                            className={`form-control ${revisarAlerta(shadow, phone)}`}
-                            value={phone}
-                            onChange={e => saveData(e)}
-                        />
-                    </div>
-                    <div className="col-6">
-                        <label htmlFor="website">{t('USUARIO.website')}</label>
-                        <input
-                            type="text"
-                            name="website"
-                            className={`form-control ${revisarAlerta(shadow, website)}`}
-                            value={website}
-                            onChange={e => saveData(e)}
-                        />
-                    </div>
+                    <Input
+                        containerClass="col-6"
+                        labelClass=""
+                        labelValue="USUARIO.phone"
+                        tipo="text"
+                        value={phone}
+                        name="phone"
+                        placeholder="USUARIO.phone"
+                        inputClass="form-control"
+                        shadow={shadow}
+                        onChange={saveData}
+                    />
+                    <Input
+                        containerClass="col-6"
+                        labelClass=""
+                        labelValue="USUARIO.website"
+                        tipo="text"
+                        value={website}
+                        name="website"
+                        placeholder="USUARIO.website"
+                        inputClass="form-control"
+                        shadow={shadow}
+                        onChange={saveData}
+                    />
                 </div>
                 <div className="row mt-3">
-                    <div className="col-12">
-                        <input
-                            type="submit"
-                            className="btn btn-block btn-primary"
-                            value={t('GENERAL.update')}
-                        />
-                    </div>
+                    <Input
+                        containerClass="col-12"
+                        tipo="submit"
+                        value="GENERAL.update"
+                        inputClass="btn btn-block btn-outline-primary"
+                        shadow={false}
+                        hasLabel={false}
+                    />
                 </div>
             </form>
         </Fragment>

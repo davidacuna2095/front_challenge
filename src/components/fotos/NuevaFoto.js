@@ -5,9 +5,9 @@ import FotoContext from '../../context/fotos/FotoContext';
 import ManagementContext from '../../context/management/ManagementContext';
 
 import { useTranslation } from 'react-i18next';
-// helper para validar si un campo esta incompleto
-import { revisarAlerta } from '../../helpers/helpers';
 import '../../styles/styles_modal.scss';
+
+import Input from '../../utils/input/Input';
 
 const NuevaFoto = ({ albumId, setCreando }) => {
 
@@ -82,47 +82,54 @@ const NuevaFoto = ({ albumId, setCreando }) => {
                         onSubmit={e => onSubmitPhoto(e)}
                     >
                         <div className="row mt-4">
-                            <div className="col-12">
-                                <label htmlFor="title">{t('USUARIO.name')}</label>
-                                <input
-                                    type="text"
-                                    name="title"
-                                    className={`form-control ${revisarAlerta(shadow, title)}`}
-                                    value={title}
-                                    onChange={e => onChangePhoto(e)}
-                                />
-                            </div>
+                            <Input
+                                containerClass="col-12"
+                                labelClass="labelFoto"
+                                labelValue="FOTO.title"
+                                tipo="text"
+                                value={title}
+                                name="title"
+                                placeholder="FOTO.placetitulo"
+                                inputClass="form-control"
+                                shadow={shadow}
+                                onChange={onChangePhoto}
+                            />
                         </div>
                         <div className="row mt-4">
-                            <div className="col-6">
-                                <label htmlFor="thumbnailUrl">Thumbnail Url</label>
-                                <input
-                                    type="text"
-                                    name="thumbnailUrl"
-                                    className={`form-control ${revisarAlerta(shadow, thumbnailUrl)}`}
-                                    value={thumbnailUrl}
-                                    onChange={e => onChangePhoto(e)}
-                                />
-                            </div>
-                            <div className="col-6">
-                                <label htmlFor="url">Url</label>
-                                <input
-                                    type="text"
-                                    name="url"
-                                    className={`form-control ${revisarAlerta(shadow, url)}`}
-                                    value={url}
-                                    onChange={e => onChangePhoto(e)}
-                                />
-                            </div>
+                            <Input
+                                containerClass="col-6"
+                                labelClass="labelFoto"
+                                labelValue="FOTO.thumbnailUrl"
+                                tipo="text"
+                                value={thumbnailUrl}
+                                name="thumbnailUrl"
+                                placeholder="FOTO.placeurl"
+                                inputClass="form-control"
+                                shadow={shadow}
+                                onChange={onChangePhoto}
+                            />
+                            <Input
+                                containerClass="col-6"
+                                labelClass="labelFoto"
+                                labelValue="FOTO.url"
+                                tipo="text"
+                                value={url}
+                                name="url"
+                                placeholder="FOTO.placeurl"
+                                inputClass="form-control"
+                                shadow={shadow}
+                                onChange={onChangePhoto}
+                            />
                         </div>
                         <div className="row mt-4">
-                            <div className="col-12 mt-4">
-                                <input
-                                    type="submit"
-                                    className="btn btn-block btn-primary"
-                                    value={t('GENERAL.add')}
-                                />
-                            </div>
+                            <Input
+                                containerClass="col-12 mt-4"
+                                tipo="submit"
+                                value="GENERAL.add"
+                                inputClass="btn btn-block btn-outline-primary"
+                                shadow={false}
+                                hasLabel={false}
+                            />
                         </div>
                     </form>
                 </div>
