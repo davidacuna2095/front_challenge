@@ -107,7 +107,7 @@ const Login = () => {
                         <div className="login-form">
                             <button
                                 type="submit"
-                                className="btn btn-primary btn-block"
+                                className="btn btn-outline-primary btn-block"
                             >Iniciar Sesión</button>
                         </div>
                     </form>
