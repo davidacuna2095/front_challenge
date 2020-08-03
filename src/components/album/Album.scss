@@ -1,0 +1,109 @@
+$meliBlue: lightblue;
+$meliBlueLight: #4da6ff;
+
+.listado-album li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    padding-left: 1em;
+    text-indent: -1em;
+
+    &:before {
+        content: "\26AA";
+        padding-right: 5px;
+        font-size: 10px;
+      }
+    &.current:before {
+        content: "\26AB";
+    }
+
+    &:nth-child(1){
+        margin-top: 16px;
+    }
+
+    span {
+        color: darkslategray;
+        line-height: 1;
+        font-weight: 200;
+
+        &.current {
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+    }
+}
+
+.form-sidebar {
+    margin-top: 2rem;
+}
+
+.album-add-form {
+    margin-top: 4.3rem;
+    padding: 5px;
+
+    input:nth-child(1){
+        margin-bottom: 10px;
+        border-radius: 7px;
+    }
+
+
+}
+
+button.add-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid whitesmoke;
+    background-color: #fff159;
+    float: right;
+    margin-bottom: 1rem;
+    outline:0;
+    
+    span {
+        width: 100%;;
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        background-color: #fff159;
+        display: contents;
+        font-weight: bold;
+
+        &:after {
+            content: 'Añadir Álbum';
+            color: black;
+            font-size: 16px;
+            background-color: #fff159;
+            position: absolute;
+            opacity: 0;
+            top: 1;
+            right: 26px;
+            transition: 0.5s;
+            padding: 1px 10px;
+            border-radius: 8px 0 0 8px;
+          }
+      }
+
+    &:hover span:after {
+        opacity: 1;
+        right: 0;
+        margin-right: 2.1rem;
+    }
+} 
+
+input[type=text].form-control {
+    outline: none;
+    outline-style: none;
+    box-shadow: none;
+}
+  
+div.album-container {
+    border-left: 5px solid lightblue;
+    border-bottom: 2px solid lightblue;
+    border-radius: 8px;
+    margin-top: 24px;
+    padding: 0 1.2rem;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+  

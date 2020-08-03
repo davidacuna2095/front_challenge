@@ -1,0 +1,169 @@
+aside  {
+    padding: 36px;
+    box-shadow: 0 6px 14px 0 rgba(7,91,148,.3);
+    background-color: #fff;
+
+    @media (min-width: 768px) {
+        background-color: white;
+        flex: 0 0 300px;
+    }
+}
+
+@media (min-width: 768px) {
+	.app-container {
+		display: flex;
+		min-height: 100vh;
+	}
+	.app-mainl {
+		flex: 1;
+	}
+}
+
+.nav-header {
+    display: flex;
+	justify-content: space-between;
+    padding: 1rem;
+    background: #000428; 
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  
+    background: linear-gradient(to right, #004e92, #000428); 
+    align-items: center;
+    
+
+    p {
+        margin: 0;
+        color: whitesmoke;
+
+        >span {
+            color: whitesmoke;
+            font-style: oblique;
+            font-weight: 300;
+        }
+    }
+}
+
+.nav-util {
+    display: inline-flex;
+    align-items: center;
+
+    & a {
+        color: white;
+        text-decoration: none;
+
+        &:first-of-type {
+            margin: 0 2rem;
+            min-width: 100px;
+        }
+    }
+}
+
+.title {
+    margin-bottom: 40px;
+    cursor: pointer;
+}
+
+.main-container {
+	padding: 3rem;
+}
+
+/* footer */
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 20px;
+	background: #EAEAEA;
+	border-top: 1px solid #FFF;
+    z-index: 2;
+
+    &:before {
+        content: "Challenge 2020 - Frontend Dave";
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-size: 10px;
+        color: #252525;
+        line-height: 20px;
+    }
+}
+
+// Detalle usuario
+
+.userIcon {
+    cursor: pointer;
+
+    &::before {
+        content: '\1F464';
+        font-size: 25px;
+        padding: 10px;
+        margin: 0px 20px;
+    }
+}
+
+.dropMenu {
+	position: absolute;
+	max-width: 280px;
+	background: #FFF;
+	top: 62px;
+	box-shadow: 4px 4px 3px 0 rgba(15, 16, 37, 0.65);
+	border-left: 1px solid #E8E9F4;
+	margin-right: 15px;
+	border-radius: 6px;
+    width: 182px;
+    z-index: 1;
+    
+    &::before {
+        content: "\25B2";
+        color: #FFF;
+        position: absolute;
+        top: -15px;
+        right: 33px;
+        transform: scaleX(1.5)   
+    }
+}
+
+
+.userProfile {
+	float: left;
+    margin: 15px;
+    text-align-last: center;
+
+    .profileIcon {
+        float: left;
+        width: 100%;
+        margin-bottom: 2px
+    }
+}
+
+.userProfileLogin {
+	float: left;
+	width: 100%;
+    text-align: center;
+    
+    p {
+        color: #8D95AF;
+        font-size: 13px;
+        font-family: "RalewayMedium", "sans-serif"
+    }
+}
+
+div.optionsUser {
+	float: left;
+	width: 100%;
+	margin-top: 7px;
+	text-align: center;
+    background: lightblue;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &.logout{
+        margin-top: 2px;
+        background: lightgrey;
+    }
+    
+    span {
+        color: #8D95AF;
+        font-size: 16px;
+        font-family: "RalewayMedium", "sans-serif"
+    }
+}
