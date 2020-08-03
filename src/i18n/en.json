@@ -32,7 +32,8 @@
         "patchPhotoSuc": "Photo successfully updated.",
         "deleteUserSuc": "User successfully updated.",
         "deleteUserError": "Sorry, there's an error.",
-        "confirmardelimg": "Are you sure you want to delete the image"
+        "confirmardelimg": "Are you sure you want to delete the image",
+        "newPhotoSuc": "Photo successfully added."
     },
     "ALBUM": {
         "nombre": "Album Name",
@@ -41,7 +42,8 @@
     "FOTO": {
         "foto": "Photo",
         "idAlbum": "Album id",
-        "title": "Title"
+        "title": "Title",
+        "nueva": "New Photo"
     },
     "USUARIO": {
         "name": "Name",

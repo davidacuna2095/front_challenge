@@ -6,7 +6,8 @@ import {
     ALERTA_FOTO,
     DETALLE_FOTO,
     EDITAR_FOTO,
-    LOADING_FOTO
+    LOADING_FOTO,
+    AGREGAR_FOTO
 } from '../../types';
 
 import FotoContext from './FotoContext';
@@ -107,6 +108,24 @@ const FotoProvider = (props) => {
         });
     };
 
+    // [POST] Añadir foto a album visualizado
+    const addPhoto = async foto => {
+        setLoading();
+        try {
+            const response = await axiosClient.post('/photos', foto);
+
+            dispatch({
+                type: AGREGAR_FOTO,
+                payload: response.data
+            });
+
+            // Muestra mensaje de adicion exitosa
+            mostrarAlertaFoto({ msg: 'patchPhotoSuc', categoria: 'alerta-ok', t: true });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     // Variables y funciones que estarán disponibles en scope del context
     return (<>
         <FotoContext.Provider
@@ -118,7 +137,8 @@ const FotoProvider = (props) => {
                 deletePhoto,
                 mostrarAlertaFoto,
                 setDetalleFoto,
-                editPhoto
+                editPhoto,
+                addPhoto
             }}
         >
             {props.children}
