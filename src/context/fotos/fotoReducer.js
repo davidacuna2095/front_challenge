@@ -4,7 +4,8 @@ import {
     ALERTA_FOTO,
     DETALLE_FOTO,
     EDITAR_FOTO,
-    LOADING_FOTO
+    LOADING_FOTO,
+    AGREGAR_FOTO
 } from '../../types';
 
 export default (state, action) => {
@@ -48,6 +49,16 @@ export default (state, action) => {
             return {
                 ...state,
                 loading: true
+            }
+
+        case AGREGAR_FOTO:
+            return {
+                ...state,
+                loading: false,
+                fotos: [
+                    action.payload,
+                    ...state.fotos
+                ]
             }
 
         default:

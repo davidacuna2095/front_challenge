@@ -82,6 +82,10 @@ button.add-button {
             padding: 1px 10px;
             border-radius: 8px 0 0 8px;
           }
+
+        &.fotoAdd:after{
+            content: 'Añadir Foto';
+        }
       }
 
     &:hover span:after {

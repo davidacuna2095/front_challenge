@@ -17,6 +17,7 @@ export const ALERTA_FOTO = "ALERTA_FOTO";
 export const DETALLE_FOTO = "DETALLE_FOTO";
 export const EDITAR_FOTO = "EDITAR_FOTO";
 export const LOADING_FOTO = "LOADING_FOTO";
+export const AGREGAR_FOTO = "AGREGAR_FOTO";
 
 export const MOSTRAR_ALERTA = "MOSTRAR_ALERTA";
 export const OCULTAR_ALERTA = "OCULTAR_ALERTA";
