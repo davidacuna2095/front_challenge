@@ -14,6 +14,7 @@ export const CERRAR_SESION = "CERRAR_SESION";
 export const LISTAR_FOTOS = "LISTAR_FOTOS";
 export const ELIMINAR_FOTO = "ELIMINAR_FOTO";
 export const ALERTA_FOTO = "ALERTA_FOTO";
+export const ALERTA_UPDATE = "ALERTA_UPDATE";
 export const DETALLE_FOTO = "DETALLE_FOTO";
 export const EDITAR_FOTO = "EDITAR_FOTO";
 export const LOADING_FOTO = "LOADING_FOTO";

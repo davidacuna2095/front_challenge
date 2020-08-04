@@ -4,6 +4,7 @@ import {
     LISTAR_FOTOS,
     ELIMINAR_FOTO,
     ALERTA_FOTO,
+    ALERTA_UPDATE,
     DETALLE_FOTO,
     EDITAR_FOTO,
     LOADING_FOTO,
@@ -61,9 +62,10 @@ const FotoProvider = (props) => {
 
             // Muestra mensaje de borrado exitoso
             mostrarAlertaFoto({ msg: 'deletePhotoSuc', categoria: 'alerta-ok', t: true });
-
+            setAlerta();
         } catch (error) {
             mostrarAlertaFoto({ msg: 'deletePhotoError', categoria: 'alerta-error', t: true });
+            setAlerta();
         }
     };
 
@@ -96,6 +98,7 @@ const FotoProvider = (props) => {
 
             // Muestra mensaje de edicion exitosa
             mostrarAlertaFoto({ msg: 'patchPhotoSuc', categoria: 'alerta-ok', t: true });
+            setAlerta();
         } catch (error) {
             console.log(error);
         }
@@ -105,6 +108,13 @@ const FotoProvider = (props) => {
     const setLoading = () => {
         dispatch({
             type: LOADING_FOTO
+        });
+    };
+
+    // Para poner loader en caso de latencia en peticion
+    const setAlerta = () => {
+        dispatch({
+            type: ALERTA_UPDATE
         });
     };
 
@@ -121,6 +131,7 @@ const FotoProvider = (props) => {
 
             // Muestra mensaje de adicion exitosa
             mostrarAlertaFoto({ msg: 'patchPhotoSuc', categoria: 'alerta-ok', t: true });
+            setAlerta();
         } catch (error) {
             console.log(error);
         }
