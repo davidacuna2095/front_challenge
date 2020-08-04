@@ -3,6 +3,7 @@ import {
     ELIMINAR_FOTO,
     ALERTA_FOTO,
     DETALLE_FOTO,
+    ALERTA_UPDATE,
     EDITAR_FOTO,
     LOADING_FOTO,
     AGREGAR_FOTO
@@ -16,6 +17,7 @@ export default (state, action) => {
             return {
                 ...state,
                 loading: false,
+                mensaje: null,
                 fotos: action.payload
             }
 
@@ -59,6 +61,12 @@ export default (state, action) => {
                     action.payload,
                     ...state.fotos
                 ]
+            }
+
+        case ALERTA_UPDATE:
+            return {
+                ...state,
+                mensaje: null
             }
 
         default:
